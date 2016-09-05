@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant Browser
+    participant Egnyte
+    participant Integration
+    Browser->>Egnyte: 1. Click integration in context menu
+    activate Egnyte
+    Egnyte-->>Browser: Open new tab and show loading screen
+    Egnyte->>Integration:  2. POST request to Integration with JSON body [invocationInput]
+    deactivate Egnyte
+    activate Integration
+    Integration->>Integration: 3. Temporarily store the [invocationInput] under unique random [id]
+    Note right of Integration: Operations on Egnyte API can be performed here if they are short. The user is looking at your logo and a spinner now.
+    Integration->>Integration: 4. Produce [browserFacingUrl] that includes the [id]
+    Integration->>Egnyte: 5. return JSON { "redirect": "browserFacingUrl" }
+    deactivate Integration
+    Egnyte->>Browser: pass through
+    activate Browser
+    Browser->>Browser: 6. Open redirect in the tab
+    Browser->>Integration: 7. GET request [browserFacingUrl]
+    deactivate Browser
+    activate Integration
+    Integration->>Integration: 8. get [invocationInput] by [id]
+    Integration->>Integration: 9. invalidate or destroy the [id]
+    deactivate Integration

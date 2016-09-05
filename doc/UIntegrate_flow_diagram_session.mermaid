@@ -1,0 +1,32 @@
+sequenceDiagram
+    participant Browser
+    participant Egnyte
+    participant Integration
+    Browser->>Egnyte: 1. Click integration in context menu
+    activate Egnyte
+    Egnyte-->>Browser: Open new tab and show loading screen
+    Egnyte->>Integration:  2. POST request to Integration with JSON body [invocationInput]
+    deactivate Egnyte
+    activate Integration
+    Integration->>Integration: 3. Temporarily store the [invocationInput] under unique random [id]
+    Integration->>Integration: 4. Produce [browserFacingUrl] that includes the [id]
+    Integration->>Egnyte: 5. return JSON { "redirect": "browserFacingUrl" }
+    deactivate Integration
+    Egnyte->>Browser: pass through
+    activate Browser
+    Browser->>Browser: 6. Open redirect in the tab
+    Browser->>Integration: 7. GET request [browserFacingUrl]
+    deactivate Browser
+    activate Integration
+    Integration->>Integration: 8. Get [invocationInput] by [id]
+    alt one invocation at the same time supported
+    Integration->>Integration: 9. Invalidate or destroy the [id] and pit [invocationInput in session]
+    else multiple invocations supported
+    Integration->>Integration: 9. Pin the [id] to current session so only this user can keep using it
+    end
+    Integration->>Browser: Return a 302 redirect to [finalUrl] with session cookies
+    deactivate Integration
+    Browser->>Integration: GET [finalUrl]
+    activate Integration
+    Note over Browser, Integration:Work with user and perform operations on API using token and data from [invocationInput]
+    deactivate Integration
