@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant Egnyte
+    participant Integration
+    activate Egnyte
+    Egnyte->>Egnyte: Add integration in appstore
+    Egnyte->>Egnyte: Produce token [T]
+    Egnyte->>Integration: Open [userSettings] URL in a popup with [queryParameters]
+    deactivate Egnyte
+    activate Integration
+    Integration->>Integration: Accept settings
+    Integration->>Egnyte: POST request to [saveUrl] with settings (optional)
+    Integration->>Integration: Close the popup window when ready
+    deactivate Integration

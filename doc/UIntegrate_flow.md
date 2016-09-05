@@ -1,8 +1,12 @@
 # UI Integration Framework Invocation flow
 
-## Suggested way of implementing a secure flow for POST to open new tab invocation pattern
+## Basic flow of the invocation
 
 ![flow diagram](UIntegrate_flow_diagram.mermaid.png)
+
+## Suggested way of implementing a secure flow for POST to open new tab invocation pattern
+
+![flow diagram](UIntegrate_flow_diagram_session.mermaid.png)
 
 ### invocationInput
 
@@ -43,17 +47,18 @@ The ID should only work for the user session that owns it.
 
 # UI Integration Framework User Settings flow
 
+![flow diagram](UIntegrate_settings_diagram.mermaid.png)
 
- Egnyte | Integration
- --- | ---
- 1. Click on install the app. The app is installed immediately and saving settings is optional | .
- 2. Produce one time token `T` | .
- 3. Open `userSettings` URL in a new tab appending `token=T&save_url=saveUrl` | .
-  . | 4. Handle the GET request
-  . | 5. Let user provide Settings
-  . | 6. Send a POST request to `saveUrl` with JSON body: `{"token":T, "data":{<key:value map of settings>}}`
-  7. Store data as settings for current user for current integration, invalidate the token | .
-  . | 8. Finish the flow by closing the window
+### userSettings
+`userSettings` is a field from definition.json
+Settings flow is only opened if the field exists.
+`userSettings` is expected to be a valid URL without query parameters.
+
+### queryParameters
+Query parameters appended by the appstore to settings URL are as follows:
+```
+?domain=acme.egnyte.com&token=T&save_url=saveUrl
+```
 
 Sending a post to `saveUrl` saves settings and they will be sent to the app on every invocation. If user cancels, the app remains installed and it needs to prompt for settings on invocation if necessary.
 
