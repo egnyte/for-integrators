@@ -20,7 +20,7 @@ sequenceDiagram
     activate Integration
     Integration->>Integration: 8. Get [invocationInput] by [id]
     alt one invocation at the same time supported
-    Integration->>Integration: 9. Invalidate or destroy the [id] and pit [invocationInput in session]
+    Integration->>Integration: 9. Invalidate or destroy the [id] and put [invocationInput] in session
     else multiple invocations supported
     Integration->>Integration: 9. Pin the [id] to current session so only this user can keep using it
     end
