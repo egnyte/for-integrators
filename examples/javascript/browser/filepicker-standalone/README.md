@@ -19,6 +19,6 @@ npm install
 npm start
 ```
 
-`npm start` will start a server on [https://localhost:8081/](https://localhost:8081/)
+`npm start` will start a server on [https://localhost:8080/](https://localhost:8080/)
 
-Prepare your Egnyte domain and an API Key you can use with it and open [https://localhost:8081/](https://localhost:8081/) - the demo will prompt for those.
+Prepare your Egnyte domain and an API Key you can use with it and open [https://localhost:8080/](https://localhost:8080/) - the demo will prompt for those.
