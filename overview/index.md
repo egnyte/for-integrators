@@ -35,7 +35,7 @@ Permissions are set on a folder level and all files inside the folder are access
 - [API Documentation](https://developers.egnyte.com/docs)
 - [Auth with domain resolution](https://developers.egnyte.com/docs/read/Public_API_Authentication#enhanced_auth)
 - [SDKs](https://developers.egnyte.com/Egnyte_SDK)
-- [Fileppicker for the browser in JS SDK](https://github.com/egnyte/egnyte-js-sdk/blob/master/src/docs/widgets.md)
+- [File picker for the browser in JS SDK](https://github.com/egnyte/egnyte-js-sdk/blob/master/src/docs/widgets.md)
 - [UI Integration framework introduction](https://developers.egnyte.com/docs/read/UI_Integration_Framework)
 - [Example UI Integration app](https://github.com/egnyte/example-UIntegration)
 - [UI Integration Framework in depth](https://github.com/egnyte/for-integrators)
