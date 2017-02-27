@@ -40,17 +40,17 @@ FUTURE means a field reserved for future use but not yet available
     "supportedPlatforms": ["windows|mac|linux|ios|android|wp"], // only for type other than (web|egnyte_ui), skip this field for UI Integration Framework apps
     "integrations": { // only required for "type" === "egnyte_ui"
         "someId": { // not visible to customers, helps tracking what shows up in context menu. no special characters.
-            "entryPoint": <context_menu | more_menu>
+            "entryPoint": <context_menu | more_menu | new_menu | edit> //edit is special type of contextmenu entry that should be availabe as an editing option in preview too
             "allowedPaths": [<restrict the integration to these file system paths>,...] (simple glob string starting from root, optional), //the glob syntax is simplified to only allow * as a special character
             "permissionLevels": [<restrict the integration to these permission levels> (optional)],
             "types": ["file","folder"],
-            "extensions": ["xls","xlsx"] (optional),
+            "extensions": ["xls","xlsx"] (optional), 
             "accessLevel": <selection | folder | fileSystem> (optional) FUTURE,
             "serviceUrl": <url of a custom remote service or static app>,
             "invocationMethod": <post_to_tab | post_headless FUTURE | get_to_modal FUTURE>,
             "icon": <icon name from fontawesome 3.2 OR icon image url (14 x 14 px, solid color #626364, transparent background)> (optional),
             "selectionQuantity": <"single" | "multiple" | [2,5]>, //default: not defined == always
-            "text": "text to show as menu option if applicable" (optional, defaults to someId value),
+            "text": "text to show as menu option if applicable",
             "tooltip": "tooltip text" (optional)
         },
         {... optionally more integrations ...}

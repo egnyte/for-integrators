@@ -44,6 +44,37 @@ Contents of `invocationInput` are sent to your app by Egnyte back-end to prevent
 
 configSaveUrl and configSaveToken can be used to update settings if necessary. For more context on them see User Settings flow below.
 
+**Example storage items**
+
+Items may contain additional fields not listed here. Only the documented fields can be depended upon.
+
+folder
+```js
+{
+    "name": "Actual docs!",
+    "path": "/Shared/Actual docs!",
+    "folder_id": "d0dfb688-cded-4349-a665-86e9ae73950e",
+    "is_folder": true
+}
+```
+
+file
+```js
+{
+    "checksum": "bd15746eb77624e29479b65b84c62f4d025dccd72a8c481367c31cf8364d74fbde1e8f5aee1ab118d5dfaab723f6f70e3f360d5ae8cf89a88bc13685a5e15927",
+    "size": 539803,
+    "path": "/Shared/Documents/document.pdf",
+    "name": "document.pdf",
+    "locked": false,
+    "is_folder": false,
+    "entry_id": "5c395049-1944-4707-a5c7-a824ab214c76",
+    "group_id": "d6856efe-326d-4f7e-b2c3-e528b47f0b33",
+    "last_modified": "Tue, 30 Aug 2016 14:10:57 GMT",
+    "uploaded_by": "someusername",
+    "num_versions": 1,
+    "num_notes": 0
+}
+```
 
 ### browserFacingUrl
 
@@ -65,7 +96,9 @@ The ID should only work for the user session that owns it.
 
 2. Assume every invocation gets a different token. They match currently, but if you store one token and ignore others, you will get into trouble later. The tokens will get scoped to files/folders in single invocation.
 
-3. Users will try to open more than one tab with integration. Handle this nicely even if you want them to only use one at the time. You can close
+3. Users will try to open more than one tab with integration. Handle this nicely even if you want them to only use one at the time. You can close the previous one or handle both.
+
+4. Creating a new file will send you an item just like regular context menu invocation, but pointing to the new empty file. 
 
 ## Notify Egnyte of Changes (Optional)
 
