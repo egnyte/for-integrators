@@ -44,10 +44,13 @@ FUTURE means a field reserved for future use but not yet available
             "allowedPaths": [<restrict the integration to these file system paths>,...] (simple glob string starting from root, optional), //the glob syntax is simplified to only allow * as a special character
             "permissionLevels": [<restrict the integration to these permission levels> (optional)],
             "types": ["file","folder"],
-            "extensions": ["xls","xlsx"] (optional), 
+            "extensions": ["xls","xlsx"] (optional),
             "accessLevel": <selection | folder | fileSystem> (optional) FUTURE,
             "serviceUrl": <url of a custom remote service or static app>,
-            "invocationMethod": <post_to_tab | post_headless FUTURE | get_to_modal FUTURE>,
+            "invocationMethod": <post_to_tab | post_to_iframe | post_headless FUTURE >,
+            "limitations":{
+                "sizeKB": <number of KB above which the integration is likely to fail to work with the file> FUTURE
+            }
             "icon": <icon name from fontawesome 3.2 OR icon image url (14 x 14 px, solid color #626364, transparent background)> (optional),
             "selectionQuantity": <"single" | "multiple" | [2,5]>, //default: not defined == always
             "text": "text to show as menu option if applicable",
