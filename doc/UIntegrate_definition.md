@@ -40,7 +40,8 @@ FUTURE means a field reserved for future use but not yet available
     "supportedPlatforms": ["windows|mac|linux|ios|android|wp"], // only for type other than (web|egnyte_ui), skip this field for UI Integration Framework apps
     "integrations": { // only required for "type" === "egnyte_ui"
         "someId": { // not visible to customers, helps tracking what shows up in context menu. no special characters.
-            "entryPoint": <context_menu | more_menu | new_menu | edit> //edit is special type of contextmenu entry that should be availabe as an editing option in preview too
+            "entryPoint": <context_menu | more_menu | new_menu >,
+            "actionType": <"open","share",falsy> (optional),
             "allowedPaths": [<restrict the integration to these file system paths>,...] (simple glob string starting from root, optional), //the glob syntax is simplified to only allow * as a special character
             "permissionLevels": [<restrict the integration to these permission levels> (optional)],
             "types": ["file","folder"],
