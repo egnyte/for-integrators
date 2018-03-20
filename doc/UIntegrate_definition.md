@@ -41,7 +41,7 @@ FUTURE means a field reserved for future use but not yet available
     "integrations": { // only required for "type" === "egnyte_ui"
         "someId": { // not visible to customers, helps tracking what shows up in context menu. no special characters.
             "entryPoint": <context_menu | more_menu | new_menu >,
-            "actionType": <"open","share",falsy> (optional),
+            "actionType": <"open","share",falsy> (optional), //puts the integration in "open in" or "share" groups in UIs
             "allowedPaths": [<restrict the integration to these file system paths>,...] (simple glob string starting from root, optional), //the glob syntax is simplified to only allow * as a special character
             "permissionLevels": [<restrict the integration to these permission levels> (optional)],
             "types": ["file","folder"],
@@ -50,7 +50,7 @@ FUTURE means a field reserved for future use but not yet available
             "serviceUrl": <url of a custom remote service or static app>,
             "invocationMethod": <post_to_tab | post_to_iframe | post_headless FUTURE >,
             "limitations":{
-                "sizeKB": <number of KB above which the integration is likely to fail to work with the file> FUTURE
+                "sizeKB": <number of KB above which the integration is likely to fail to work with the file>
             }
             "icon": <icon name from fontawesome 3.2 OR icon image url (14 x 14 px, solid color #626364, transparent background)> (optional),
             "selectionQuantity": <"single" | "multiple" | [2,5]>, //default: not defined == always
