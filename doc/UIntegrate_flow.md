@@ -34,7 +34,7 @@ When a user clicks on a button you've exposed, Egnyte server will send a POST re
     },
     "domain": "acme.egnyte.com",
     "token": "public API token",
-    "config": <settings saved via userSettings screen>,
+    "config": <settings saved via userSettings screen combined with globalSettings>,
     "configSaveUrl": <saveUrl>,
     "configSaveToken": <T>
 }
@@ -42,7 +42,7 @@ When a user clicks on a button you've exposed, Egnyte server will send a POST re
 
 Contents of `invocationInput` are sent to your app by Egnyte back-end to prevent them from passing throught the browser. Please make sure the `redirect` doesn't refer to them directly and they are not stored in cookies or localStorage.
 
-configSaveUrl and configSaveToken can be used to update settings if necessary. For more context on them see User Settings flow below.
+configSaveUrl and configSaveToken can be used to update settings if necessary. For more context on them see Settings flow below.
 
 **Example storage items**
 
@@ -105,20 +105,31 @@ The ID should only work for the user session that owns it.
 While the app is open, it can communicate with Egnyte's Web UI using three events: completion, error, and refresh. For more information on sending events, please refer to [this section](https://github.com/egnyte/egnyte-js-sdk/blob/master/src/docs/uintegrate.md) of the JavaScript SDK.
 
 
-# UI Integration Framework User Settings flow
+# UI Integration Framework Settings flow
 
-User Settings flow occurs when a user installs the integration app. This flow is optional and only triggered if the userSettings Url is set in the definition.json. This flow is often used to save a user's authentication token. Egnyte generates a one-time use token and opens userSettings Url in a pop-up. Your application can then make a POST request to saveUrl provided. Egnyte saves the user settings data and sends these back with every invocation.
+## User Settings and Global Settings
+There are two types of settings which have the same saving flow, but differ with the type of user that can invoke the saving flow. Both flows are optional and only triggered if the corresponding Url (userSettings or globalSettings) is set in the definition.json. Egnyte generates a one-time use token and opens userSettings or globalSettings Url in a pop-up. Your application can then make a POST request to saveUrl provided. Egnyte saves the user  and globals settings data and sends these back combined with every invocation
 
+User Settings are individual for each user using your integration. User Settings flow occurs when a user installs the integration app and choose to configure it. This flow is often used to save a user's authentication token.
+
+Global Settings are common for a domain in which an administrator installs the integrations. Global Settings flow occurs when an administrator installed the integration and choose to configure it. The flow is often used to save domain specific URLs linking with other websites or integrations.
+
+## Flow
 ![flow diagram](UIntegrate_settings_diagram.mermaid.png)
 
-When a user clicks to install your application, Egnyte produces a one-time use token, T, and opens the userSettings Url (defined in definition.json) in a new tab with the token appended to the Url.
+When a user or admin choose to configure your application, Egnyte produces a one-time use token, T, and opens the userSettings or globalSettings Url (defined in definition.json) in a new tab with the token appended to the Url.
 
-Your application handles the GET request and lets the user provide his settings for your application. Your application sends a POST request to saveUrl with a JSON body that includes the token and data containing the user settings.
+Your application handles the GET request and lets the user od administrator provide his or her settings for your application. Your application sends a POST request to saveUrl with a JSON body that includes the token and data containing the settings.
 
 ### userSettings
 `userSettings` is a field from definition.json
-Settings flow is only opened if the field exists.
+User Settings flow is only opened if the field exists.
 `userSettings` is expected to be a valid URL without query parameters.
+
+### globalSettings
+`globalSettings` is a field from definition.json
+Global Settings flow is only opened if the field exists.
+`globalSettings` is expected to be a valid URL without query parameters.
 
 ### queryParameters
 Query parameters appended by the appstore to settings URL are as follows:

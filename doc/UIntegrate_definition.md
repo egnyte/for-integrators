@@ -26,7 +26,7 @@ FUTURE means a field reserved for future use but not yet available
     "industries": [<suggested set of industries, FUTURE>],
     "type": "egnyte_ui|web|mobile|desktop", // FUTURE, if you're making a UI Integration, use "egnyte_ui"
     "userSettings": <url to index of the userSettings static js app (optional)>,
-    "globalSettings": <url to index of the globalSettings static js app (optional), FUTURE>,
+    "globalSettings": <url to index of the globalSettings static js app (optional)>,
     "description": <short description for appstore>,
     "longDescription": <long description for appstore> (optional),
     "appLogo": <url to app logo image, visible in the appstore, white or transparent background, no padding, preferred up to 236 x 126 px>,
