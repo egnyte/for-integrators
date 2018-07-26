@@ -30,7 +30,7 @@ function getLinkSettingsForDomain(egnyte) {
 //         "default_type": "anyone"
 //     }
 // }
-// If `file_links` field is not present, sharing liunks is disabled.
+// If `file_links` field is not present, sharing links is disabled.
 //===============
 // {
 //     "expiration": {
