@@ -1,5 +1,5 @@
 module.exports = {
-    devtool: "eval",
+    mode: "development",
     entry: "./index.js",
     output: {
         path: __dirname,
@@ -7,8 +7,9 @@ module.exports = {
         publicPath: "/app/"
     },
     module: {
-        loaders: [
-            { test: /\.css$/, loader: "style!css" }
-        ]
+        rules: [{
+            test: /\.css$/,
+            use: ["css-loader"]
+        }]
     }
 };

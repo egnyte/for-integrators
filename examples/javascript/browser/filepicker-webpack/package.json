@@ -9,8 +9,11 @@
   "author": "Egnyte Inc.",
   "license": "MIT",
   "dependencies": {
-    "egnyte-js-sdk": "^2.4.2",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.15.1"
+    "egnyte-js-sdk": "^2.7.1",
+    "webpack": "^4.28.1",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.2.1"
   }
 }
