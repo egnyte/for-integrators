@@ -21,6 +21,7 @@ FUTURE means a field reserved for future use but not yet available
         "email": <support email address> (optional),
         "phone": <support phone number>  (optional)
     },
+    "legacy": <if legacy version>, // we will not display this app if this flag is enabled and domain doesn't have this app
     "userManual": <url to user manual> (optional),
     "categories": [<suggested set of categories, subset of ["productivity", "collaboration", "businessAutomation", "securityAdministration", "projectManagement", "migrationSynchronization"]],
     "industries": [<suggested set of industries, FUTURE>],
@@ -76,6 +77,7 @@ FUTURE means a field reserved for future use but not yet available
     "support": {
         "web": "https://example.com/abccompany/helpdesk"
     },
+    "legacy": true,
     "categories": ["productivity", "collaboration"],
     "type": "web",
     "appLogo": "https://example.com/abccompany/static/abc_company_logo.png",
