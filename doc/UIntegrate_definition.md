@@ -21,11 +21,11 @@ FUTURE means a field reserved for future use but not yet available
         "email": <support email address> (optional),
         "phone": <support phone number>  (optional)
     },
-    "legacy": <if legacy version>, // we will not display this app if this flag is enabled and domain doesn't have this app
+    "legacy": <if legacy version> (optional), // we will not display this app if this flag is enabled and domain doesn't have this app
     "userManual": <url to user manual> (optional),
     "categories": [<suggested set of categories, subset of ["productivity", "collaboration", "businessAutomation", "securityAdministration", "projectManagement", "migrationSynchronization"]],
     "industries": [<suggested set of industries, FUTURE>],
-    "type": "egnyte_ui|web|mobile|desktop", // FUTURE, if you're making a UI Integration, use "egnyte_ui"
+    "type": "egnyte_ui|egnyte_source|web|mobile|desktop", // FUTURE, if you're making a UI Integration, use "egnyte_ui", if you're building a classification source, use "egnyte_source"
     "userSettings": <url to index of the userSettings static js app (optional)>,
     "globalSettings": <url to index of the globalSettings static js app (optional)>,
     "description": <short description for appstore>,
@@ -37,8 +37,9 @@ FUTURE means a field reserved for future use but not yet available
         "video": [<array with a YouTube video url, preferred 16:9 ratio>] (max 1, optional), // in order not to break CFS
         "images": [<array of image urls, preferred 16:9 ratio, preferred at least 425 x 239 px>] (3+ required, videos can count towards this number)
     },
-    "url": <url to app>, // only for links/downloadable apps, skip this field for UI Integration Framework apps
     "supportedPlatforms": ["windows|mac|linux|ios|android|wp"], // only for type other than (web|egnyte_ui), skip this field for UI Integration Framework apps
+    "url": <url to app>, // only for links/downloadable apps, skip this field for UI Integration Framework apps
+    "sourceUrl": <url to the source setup>, // only if building a classification source, type field set to "egnyte_source"
     "integrations": { // only required for "type" === "egnyte_ui"
         "someId": { // not visible to customers, helps tracking what shows up in context menu. no special characters.
             "entryPoint": <context_menu | more_menu | new_menu >,
@@ -77,7 +78,6 @@ FUTURE means a field reserved for future use but not yet available
     "support": {
         "web": "https://example.com/abccompany/helpdesk"
     },
-    "legacy": true,
     "categories": ["productivity", "collaboration"],
     "type": "web",
     "appLogo": "https://example.com/abccompany/static/abc_company_logo.png",
@@ -129,5 +129,33 @@ FUTURE means a field reserved for future use but not yet available
             "text": "Check Status of ABC Company Requests"
         }
     }
+}
+```
+
+```js
+{
+    "appId": "abccompany",
+    "name": "ABC storage classification source",
+    "company": {
+        "name": "ABC Company, Inc."
+    },
+    "apiKey": *** ,
+    "support": {
+        "web": "https://example.com/abccompany/helpdesk"
+    },
+    "categories": [],
+    "type": "egnyte_source",
+    "appLogo": "https://example.com/abccompany/static/abc_company_logo.png",
+    "description": "Use data from ABC as source for Protect Classification",
+    "longDescription": "...",
+    "screenshots": {
+        "images": [
+            "https://example.com/abccompany/static/screen1",
+            "https://example.com/abccompany/static/screen2",
+            "https://example.com/abccompany/static/screen3"
+        ]
+    },
+    "url":"https://example.com/landing-page",
+    "sourceUrl":"https://example.com/configure-the-source"
 }
 ```
