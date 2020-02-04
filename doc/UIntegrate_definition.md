@@ -57,7 +57,11 @@ FUTURE means a field reserved for future use but not yet available
             "icon": <icon name from fontawesome 3.2 OR icon image url (14 x 14 px, solid color #626364, transparent background)> (optional),
             "selectionQuantity": <"single" | "multiple" | [2,5]>, //default: not defined == always
             "text": "text to show as menu option if applicable",
-            "tooltip": "tooltip text" (optional)
+            "tooltip": "tooltip text" (optional),
+            "availableOnMobile": { // without this property integration doesn't available on mobile devices (optional)
+                "android": < true | url of a custom remote service or static app >, // set if integration available on android devices, url override serviceUrl property (optional)
+                "iOS": < true | url of a custom remote service or static app > // set if integration available on iOS devices, url override serviceUrl property (optional)
+            }
         },
         {... optionally more integrations ...}
     }
@@ -127,6 +131,10 @@ FUTURE means a field reserved for future use but not yet available
             "invocationMethod": "post_to_tab",
             "icon": "list-alt",
             "text": "Check Status of ABC Company Requests"
+        },
+        "availableOnMobile": {
+            "android": true,
+            "iOS": "https://example.com/abccompany/envelopes/invokeIOS"
         }
     }
 }
