@@ -10,10 +10,10 @@
   "license": "MIT",
   "dependencies": {
     "egnyte-js-sdk": "^2.7.1",
-    "webpack": "^4.28.1",
+    "webpack": "^5.75.0",
     "webpack-dev-server": "^3.1.14"
   },
   "devDependencies": {
-    "webpack-cli": "^3.2.1"
+    "webpack-cli": "^5.0.1"
   }
 }
