@@ -4,16 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --live --colors"
+    "start": "webpack-dev-server",
+    "build": "webpack"
   },
   "author": "Egnyte Inc.",
   "license": "MIT",
   "dependencies": {
-    "egnyte-js-sdk": "^2.7.1",
-    "webpack": "^4.28.1",
-    "webpack-dev-server": "^3.1.14"
+    "egnyte-js-sdk": "^2.10.1",
+    "webpack": "^5.103.0",
+    "webpack-dev-server": "^5.2.2"
   },
   "devDependencies": {
-    "webpack-cli": "^3.2.1"
+    "webpack-cli": "^6.0.1"
   }
 }
